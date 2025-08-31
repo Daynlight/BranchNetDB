@@ -24,7 +24,7 @@ endfunction()
 
 add_subdirectory(BranchNetDB)
 
-add_custom_target(run
+add_custom_target(git_bash_windows
     COMMAND "cmd.exe" "/c start \"\" \"C:/Program Files/Git/bin/bash.exe\" \"${CMAKE_SOURCE_DIR}/Run.sh\""
     DEPENDS BranchNetDB
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
