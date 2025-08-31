@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.20)
 
 set(CMAKE_JAR_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/jars" CACHE PATH "Global runtime dir")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin" CACHE PATH "Global runtime dir")
@@ -25,9 +25,7 @@ endfunction()
 add_subdirectory(BranchNetDB)
 
 add_custom_target(run
-    COMMAND ${Java_JAVA_EXECUTABLE} 
-            -cp "${CMAKE_JAR_OUTPUT_DIRECTORY}/*"   # include all jars
-            BranchNetDB                                # your main class
-    DEPENDS BranchNetDB                             # rebuild JARs first
+    COMMAND "cmd.exe" "/c start \"\" \"C:/Program Files/Git/bin/bash.exe\" \"${CMAKE_SOURCE_DIR}/Run.sh\""
+    DEPENDS BranchNetDB
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
