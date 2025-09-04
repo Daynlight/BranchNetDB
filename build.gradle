@@ -1,0 +1,46 @@
+plugins {
+  id 'java'
+  id 'application'
+}
+
+application {
+  mainClass = 'DaynNetDB'
+}
+
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(24)
+  }
+}
+
+repositories {
+  mavenCentral()
+}
+
+sourceSets {
+  main {
+    java {
+      setSrcDirs(['DaynNetDB'])
+    }
+  }
+}
+
+tasks.named('run') {
+  standardInput = System.in
+  standardOutput = System.out
+  errorOutput = System.err
+  doFirst {
+    System.out.flush()
+  }
+}
+
+jar {
+  manifest {
+    attributes(
+      'Main-Class': 'DaynNetDB'
+    )
+  }
+  from {
+    configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+  }
+}

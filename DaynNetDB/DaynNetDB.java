@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 
-public class BranchNetDB {
+public class DaynNetDB {
   public static void main(String[] args) {
     System.out.println("Hello DB");
     
